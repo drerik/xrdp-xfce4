@@ -1,9 +1,8 @@
 version: '3.5'
 services:
   terminalserver:
-    build: ./
-    image: ghcr.io/drerik/xrdp-xfce4:main
-    container_name: uxrdp
+    #build: ./
+    image: ghcr.io/drerik/xrdp-xfce4-no:main
     hostname: terminalserver
     restart: always
     shm_size: 1g
@@ -15,7 +14,7 @@ services:
     volumes:
       - ssh:/etc/ssh/
       - home:/home/
-      - $PWD/users.list.example:/etc/users.list
+      - $PWD/etc/users.list:/etc/users.list:ro
 
 volumes:
   ssh:
