@@ -2,7 +2,7 @@ version: '3.5'
 services:
   terminalserver:
     build: ./
-    image: danielguerra/ubuntu-xrdp:20.04
+    image: ghcr.io/drerik/xrdp-xfce4:main
     container_name: uxrdp
     hostname: terminalserver
     restart: always
@@ -14,7 +14,8 @@ services:
       - "2222:22"
     volumes:
       - ssh:/etc/ssh/
-      - home/:/home/
+      - home:/home/
+      - $PWD/users.list.example:/etc/users.list
 
 volumes:
   ssh:
