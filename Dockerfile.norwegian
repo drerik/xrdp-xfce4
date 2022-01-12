@@ -1,0 +1,8 @@
+FROM ghcr.io/drerik/xrdp-xfce4
+
+# Add Support for norwegian Keyboard
+RUN locale-gen nb_NO.UTF-8
+RUN echo "export LANG='nb_NO.UTF-8'" >> /etc/profile
+RUN echo "export LC_ALL='nb_NO.UTF-8'" >> /etc/profile
+RUN sed -i 's/rdp_layout_us=0x00000409/rdp_layout_no=0x00000414\nrdp_layout_us=0x00000409/g' /etc/xrdp/xrdp_keyboard.ini
+RUN sed -i 's/rdp_layout_us=us/rdp_layout_no=no\nrdp_layout_us=us/g' /etc/xrdp/xrdp_keyboard.ini
